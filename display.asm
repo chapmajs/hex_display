@@ -1,37 +1,42 @@
+; PIC18F6310 based LED hex display
+; Version 0.1 Copyright (c) 2013 Jonathan Chapman
+; http://www.glitchwrks.com
+;
+; See LICENSE included in the project root for licensing information.
 
 ; PIC18F6310 Configuration Bit Settings
-
     #include <p18f6310.inc>
 
-    CONFIG WDT = OFF            ; Watchdog Timer disabled
+    CONFIG  WDT = OFF           ; Watchdog Timer disabled
     CONFIG  CP = OFF            ; Code Protect disabled
     CONFIG  MCLRE = ON          ; Master Clear Enable
     CONFIG  OSC = INTIO67       ; Internal oscillator block, port function on RA6 and RA7
     CONFIG  IESO = OFF          ; Oscillator Switchover mode disabled
 
     ORG 0
-    GOTO Start
+    goto Start
 
     ORG 8
-    GOTO ISR
+    goto ISR
 
+; Variable declarations
     cblock  0x20
-        Current
-        chars:8
-        W_temp
+        Current                 ; Current active digit
+        chars:8                 ; Display buffer
+        W_temp                  ; Temporary storage for ISR
         S_temp
-        count
     endc
 
 DIGITS  EQU     d'4'
 
 Start:
-        movlw B'11100010'
-        movwf OSCCON
-        movlw B'11100000'
-        movwf INTCON
-        CLRF TRISB
-        ; Start table read
+        movlw   B'11100010'
+        movwf   OSCCON
+        movlw   B'11100000'
+        movwf   INTCON
+        clrf    TRISB
+
+        ; Fill the display buffer with test data
         movlw   0x0B
         call    HEX
         movwf   chars + d'0'
@@ -44,19 +49,17 @@ Start:
         movlw   0x0F
         call    HEX
         movwf   chars + d'3'
-        nop
-        ; End table read
-        CLRF TRISE
+
+        clrf    TRISE
         movlw   d'1'
         movwf   Current
-        nop
-        movlw B'10001000'
-        movwf T0CON
-        movlw B'11111000'
-        movwf TMR0H
-        clrf  TMR0L
+        movlw   B'10001000'
+        movwf   T0CON
+        movlw   B'11111000'
+        movwf   TMR0H
+        clrf    TMR0L
 NOPPER: nop
-        goto  NOPPER
+        goto    NOPPER
 
 ISR:    movwf   W_temp
         movf    STATUS, W
@@ -73,18 +76,17 @@ ISR:    movwf   W_temp
         movf    Current, W
         xorlw   DIGITS
         btfsc   STATUS, Z
-        goto    Inc
-        incf    Current, f
         goto    ISR1
-Inc     clrf    Current
-
-ISR1:   movlw B'11111000'
-        movwf TMR0H
-        clrf  TMR0L
+        incf    Current, f
+        goto    ISR2
+ISR1:   clrf    Current
+ISR2:   movlw   B'11111000'
+        movwf   TMR0H
+        clrf    TMR0L
         movf    W_temp, W
         movf    S_temp, W
         movwf   STATUS
-        bcf  INTCON, 2
+        bcf     INTCON, 2
         retfie
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -124,12 +126,12 @@ DIGIT:  mullw   d'4'
 ;       Bitmap table exists at 0x0400
 ; post: W contains 7-segment bitmap
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-HEX:    movwf    TBLPTRL
+HEX:    movwf   TBLPTRL
         movlw   0x00
         movwf   TBLPTRU
         movlw   0x04
         movwf   TBLPTRH
-        TBLRD*
+        tblrd*
         movf    TABLAT, W
         return
 
