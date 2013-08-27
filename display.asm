@@ -27,7 +27,7 @@
         S_temp
     endc
 
-DIGITS  EQU     d'4'
+DIGITS  EQU     d'8'
 
 Start:
         movlw   B'11100010'
@@ -37,20 +37,24 @@ Start:
         clrf    TRISB
 
         ; Fill the display buffer with test data
-        movlw   0x0B
-        call    HEX
-        movwf   chars + d'0'
-        movlw   0x0E
-        call    HEX
-        movwf   chars + d'1'
-        movlw   0x0E
+        setf    TRISC
+
+        movlw   0x0F
         call    HEX
         movwf   chars + d'2'
         movlw   0x0F
         call    HEX
         movwf   chars + d'3'
+        movlw   0x0E
+        call    HEX
+        movwf   chars + d'4'
+        movlw   0x0E
+        call    HEX
+        movwf   chars + d'5'
 
         clrf    TRISE
+        clrf    TRISA
+        clrf    TRISG
         movlw   d'1'
         movwf   Current
         movlw   B'10001000'
@@ -59,6 +63,15 @@ Start:
         movwf   TMR0H
         clrf    TMR0L
 NOPPER: nop
+        movlw   0x0F
+        andwf   PORTC, W
+        call    HEX
+        movwf   chars + d'0'
+
+        swapf   PORTC, W
+        andlw   0x0F
+        call    HEX
+        movwf   chars + d'1'
         goto    NOPPER
 
 ISR:    movwf   W_temp
@@ -97,6 +110,10 @@ ISR2:   movlw   B'11111000'
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 BLANK:  movlw   B'10000111'
         andwf   PORTE, f
+        movlw   B'00111111'
+        andwf   PORTA, f
+        movlw   B'11100111'
+        andwf   PORTG, f
         return
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -117,6 +134,14 @@ DIGIT:  mullw   d'4'
         bsf     PORTE, 5
         return
         bsf     PORTE, 6
+        return
+        bsf     PORTA, 6
+        return
+        bsf     PORTA, 7
+        return
+        bsf     PORTG, 3
+        return
+        bsf     PORTG, 4
         return
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
