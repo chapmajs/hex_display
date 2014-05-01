@@ -20,4 +20,5 @@ A PIC microcontroller with plenty of I/O was chosen to allow input of 24 bits of
 ### Files
 
 * display.asm: PIC18F6310 firmware for driving mutiplexed common cathode 7-segment displays
-
+* schematic.sch: Eagle CAD schematic
+* schematic.brd: Eagle CAD board layout
