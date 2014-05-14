@@ -33,3 +33,4 @@ There's a thread on the [BinRev Forums](http://www.binrev.com/forums/index.php/t
 * pinouts.md: PC board connector pinouts
 * schematic.sch: Eagle CAD schematic
 * schematic.brd: Eagle CAD board layout
+* eagle_libs: Directory containing nonstandard Eagle CAD parts
