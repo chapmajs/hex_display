@@ -28,5 +28,6 @@ There's a thread on the [BinRev Forums](http://www.binrev.com/forums/index.php/t
 ### Files
 
 * display.asm: PIC18F6310 firmware for driving mutiplexed common cathode 7-segment displays
+* pinouts.md: PC board connector pinouts
 * schematic.sch: Eagle CAD schematic
 * schematic.brd: Eagle CAD board layout
