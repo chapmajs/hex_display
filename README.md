@@ -3,6 +3,8 @@ PIC Based Mutiplexed 7-segment LED Display
 
 A project to drive multiplexed 7-segment LED displays as hex displays using a Microchip PIC18F6310 with a minimum of external components. This is a work in progress!
 
+This project is released as [Open Source Hardware (OSHW)](http://www.openhardware.org/). All hardware contained within this repository are covered by a [Creative Commons Attribution-ShareAlike 3.0 license (CC BY-SA 3.0)](http://creativecommons.org/licenses/by-sa/3.0/). Firmware and software are licensed under GPLv3 -- see LICENSE and GPL-3.0 for more information.
+
 ### Current Status
 
 Rev 0 PC board has been tested, sample firmware in this repository displays 'deadbeef'. Minor tweaks to the PC board layout are required for 0.1" perfboard compatibility. 24-bit port input has not yet been tested.
