@@ -5580,7 +5580,7 @@ Please make sure your boards conform to these design rules.</description>
 <attribute name="VALUE" x="7.493" y="19.304" size="1.27" layer="27" ratio="10"/>
 </element>
 <element name="JP1" library="pinhead" package="1X18" value="" x="23.622" y="31.496" smashed="yes">
-<attribute name="NAME" x="1.9558" y="28.2448" size="1.27" layer="25" ratio="10"/>
+<attribute name="NAME" x="3.2258" y="28.4988" size="1.27" layer="25" ratio="10"/>
 <attribute name="VALUE" x="0.762" y="28.321" size="1.27" layer="27"/>
 </element>
 <element name="R1" library="resistor" package="R0603" value="" x="7.9502" y="28.4226" rot="R180"/>
@@ -5591,12 +5591,19 @@ Please make sure your boards conform to these design rules.</description>
 <element name="R6" library="resistor" package="R0603" value="" x="33.3756" y="28.448" rot="R180"/>
 <element name="R7" library="resistor" package="R0603" value="" x="38.4302" y="28.4988" rot="R180"/>
 <element name="R8" library="resistor" package="R0603" value="" x="43.5102" y="28.4988" rot="R180"/>
-<element name="R9" library="resistor" package="R0603" value="" x="34.798" y="9.906" rot="MR0"/>
-<element name="R10" library="resistor" package="R0603" value="" x="37.2364" y="12.7508" rot="R90"/>
-<element name="C6" library="resistor" package="C0603K" value="" x="39.7256" y="9.906" rot="MR180"/>
+<element name="R9" library="resistor" package="R0603" value="470R" x="34.798" y="9.906" smashed="yes" rot="MR0">
+<attribute name="NAME" x="35.941" y="7.493" size="1.27" layer="26" rot="MR0"/>
+</element>
+<element name="R10" library="resistor" package="R0603" value="10K" x="37.2364" y="12.7508" smashed="yes" rot="R90">
+<attribute name="NAME" x="36.0934" y="11.0998" size="1.27" layer="25" rot="R90"/>
+</element>
+<element name="C6" library="resistor" package="C0603K" value="0.1 uF" x="39.7256" y="9.906" rot="MR180"/>
 <element name="JP2" library="pinhead" package="2X18" value="" x="23.622" y="3.302"/>
 <element name="JP3" library="pinhead" package="1X06" value="" x="44.704" y="16.51" rot="R90"/>
-<element name="C7" library="resistor" package="B/3528-21W" value="" x="2.032" y="23.876" rot="R270"/>
+<element name="C7" library="resistor" package="B/3528-21W" value="" x="2.032" y="23.876" smashed="yes" rot="R270">
+<attribute name="NAME" x="3.378" y="27.096" size="1.27" layer="25" rot="R270"/>
+<attribute name="VALUE" x="-0.893" y="25.826" size="1.27" layer="27" rot="R270"/>
+</element>
 <element name="U$1" library="ohw-logo" package="OSHW_8X200_NOTEXT" value="" x="15.748" y="8.128"/>
 </elements>
 <signals>

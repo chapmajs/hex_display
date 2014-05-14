@@ -12525,9 +12525,9 @@ diameter 5 mm, grid 2.54 mm</description>
 <part name="R6" library="resistor" deviceset="R-US_" device="R0603"/>
 <part name="R7" library="resistor" deviceset="R-US_" device="R0603"/>
 <part name="R8" library="resistor" deviceset="R-US_" device="R0603"/>
-<part name="R9" library="resistor" deviceset="R-US_" device="R0603"/>
-<part name="R10" library="resistor" deviceset="R-US_" device="R0603"/>
-<part name="C6" library="resistor" deviceset="C-US" device="C0603K"/>
+<part name="R9" library="resistor" deviceset="R-US_" device="R0603" value="470R"/>
+<part name="R10" library="resistor" deviceset="R-US_" device="R0603" value="10K"/>
+<part name="C6" library="resistor" deviceset="C-US" device="C0603K" value="0.1 uF"/>
 <part name="GND4" library="supply1" deviceset="GND" device=""/>
 <part name="P+3" library="supply1" deviceset="+5V" device=""/>
 <part name="JP2" library="pinhead" deviceset="PINHD-2X18" device=""/>
@@ -12541,6 +12541,8 @@ diameter 5 mm, grid 2.54 mm</description>
 <sheets>
 <sheet>
 <plain>
+<text x="-48.26" y="157.48" size="1.778" layer="91">C1 - C5 0.1 uF</text>
+<text x="144.78" y="-17.78" size="1.778" layer="91">Choose R1 - R8 for required segment current</text>
 </plain>
 <instances>
 <instance part="U1" gate="A" x="53.34" y="60.96"/>
@@ -12564,7 +12566,7 @@ diameter 5 mm, grid 2.54 mm</description>
 <instance part="R6" gate="G$1" x="190.5" y="2.54"/>
 <instance part="R7" gate="G$1" x="190.5" y="-2.54"/>
 <instance part="R8" gate="G$1" x="190.5" y="-7.62"/>
-<instance part="R9" gate="G$1" x="-55.88" y="30.48" rot="R90"/>
+<instance part="R9" gate="G$1" x="-58.42" y="30.48" rot="R90"/>
 <instance part="R10" gate="G$1" x="-50.8" y="30.48" rot="R90"/>
 <instance part="C6" gate="G$1" x="-50.8" y="17.78"/>
 <instance part="GND4" gate="1" x="-50.8" y="10.16"/>
@@ -13030,8 +13032,8 @@ diameter 5 mm, grid 2.54 mm</description>
 <pinref part="R10" gate="G$1" pin="1"/>
 <wire x1="-50.8" y1="25.4" x2="-50.8" y2="22.86" width="0.1524" layer="91"/>
 <pinref part="R9" gate="G$1" pin="1"/>
-<wire x1="-50.8" y1="22.86" x2="-55.88" y2="22.86" width="0.1524" layer="91"/>
-<wire x1="-55.88" y1="22.86" x2="-55.88" y2="25.4" width="0.1524" layer="91"/>
+<wire x1="-50.8" y1="22.86" x2="-58.42" y2="22.86" width="0.1524" layer="91"/>
+<wire x1="-58.42" y1="22.86" x2="-58.42" y2="25.4" width="0.1524" layer="91"/>
 <junction x="-50.8" y="22.86"/>
 <pinref part="C6" gate="G$1" pin="1"/>
 <wire x1="-50.8" y1="22.86" x2="-50.8" y2="20.32" width="0.1524" layer="91"/>
@@ -13400,7 +13402,7 @@ diameter 5 mm, grid 2.54 mm</description>
 <net name="N$10" class="0">
 <segment>
 <pinref part="R9" gate="G$1" pin="2"/>
-<wire x1="-55.88" y1="35.56" x2="-55.88" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="-58.42" y1="35.56" x2="-58.42" y2="40.64" width="0.1524" layer="91"/>
 <pinref part="U1" gate="A" pin="RG5/~MCLR/VPP"/>
 <wire x1="91.44" y1="22.86" x2="96.52" y2="22.86" width="0.1524" layer="91"/>
 <wire x1="96.52" y1="22.86" x2="96.52" y2="-17.78" width="0.1524" layer="91"/>
@@ -13409,7 +13411,7 @@ diameter 5 mm, grid 2.54 mm</description>
 <pinref part="JP3" gate="A" pin="1"/>
 <wire x1="-66.04" y1="40.64" x2="-66.04" y2="104.14" width="0.1524" layer="91"/>
 <wire x1="-66.04" y1="104.14" x2="-71.12" y2="104.14" width="0.1524" layer="91"/>
-<wire x1="-55.88" y1="40.64" x2="-66.04" y2="40.64" width="0.1524" layer="91"/>
+<wire x1="-58.42" y1="40.64" x2="-66.04" y2="40.64" width="0.1524" layer="91"/>
 <junction x="-66.04" y="40.64"/>
 </segment>
 </net>
